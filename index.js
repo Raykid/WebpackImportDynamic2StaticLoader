@@ -16,7 +16,7 @@ module.exports = function(source) {
         insertIndex = regTripleDiagonal.lastIndex;
     }
     // 匹配动态import
-    const regDynamicImport = /await import\(([^\)]+)\)/g;
+    const regDynamicImport = /import\(([^\)]+)\)/g;
     const nameDict = {};
     let lastIndex = insertIndex;
     let curCount = 0;
@@ -35,8 +35,8 @@ module.exports = function(source) {
         }
         // 追加位置前的内容
         dist += source.substring(lastIndex, result.index);
-        // 将import替换成变量名
-        dist += modName;
+        // 将import替换成立即回调的Promise
+        dist += `new Promise(function(resolve){resolve(${modName})})`;
         // 记录最后位置
         lastIndex = result.index + result[0].length;
     }
