@@ -1,0 +1,25 @@
+{
+  "name": "import-dynamic2static-loader",
+  "version": "1.0.0",
+  "description": "一个webpack loader，用于将代码中的动态import替换为静态import",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raykid/WebpackImportDynamic2StaticLoader.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "dynamic",
+    "static"
+  ],
+  "author": "Raykid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raykid/WebpackImportDynamic2StaticLoader/issues"
+  },
+  "homepage": "https://github.com/Raykid/WebpackImportDynamic2StaticLoader#readme"
+}
