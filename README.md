@@ -1,0 +1,2 @@
+# WebpackImportDynamic2StaticLoader
+一个webpack loader，用于将代码中的动态import替换为静态import
