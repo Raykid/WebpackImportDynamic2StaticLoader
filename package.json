@@ -1,6 +1,6 @@
 {
   "name": "import-dynamic2static-loader",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "一个webpack loader，用于将代码中的动态import替换为静态import",
   "main": "index.js",
   "files": [

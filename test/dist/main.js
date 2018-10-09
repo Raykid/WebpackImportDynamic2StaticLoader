@@ -86,6 +86,53 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src lazy recursive ^\\.\\/.*$":
+/*!********************************************!*\
+  !*** ./src lazy ^\.\/.*$ namespace object ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./main": [
+		"./src/main.js",
+		9
+	],
+	"./main.js": [
+		"./src/main.js",
+		9
+	],
+	"./module": [
+		"./src/module.js",
+		7
+	],
+	"./module.js": [
+		"./src/module.js",
+		7
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids) {
+		return Promise.resolve().then(function() {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
+	}
+	return Promise.all(ids.slice(2).map(__webpack_require__.e)).then(function() {
+		var id = ids[0];
+		return __webpack_require__.t(id, ids[1])
+	});
+}
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = "./src lazy recursive ^\\.\\/.*$";
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -97,11 +144,25 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module */ "./src/module.js");
 /* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_module__WEBPACK_IMPORTED_MODULE_0__);
+/// jaksdjf
+// fjdk
+/// fjsdkalfjd
+
 
 (async function(){
-    _module__WEBPACK_IMPORTED_MODULE_0__["test"]();
-    _module__WEBPACK_IMPORTED_MODULE_0__["test"]();
-    _module__WEBPACK_IMPORTED_MODULE_0__["test"]();
+
+    // 这5个写法应该都支持
+    (await new Promise(function(resolve){resolve(_module__WEBPACK_IMPORTED_MODULE_0__)})).test();
+    (await new Promise(function(resolve){resolve(_module__WEBPACK_IMPORTED_MODULE_0__)})).test();
+    (await new Promise(function(resolve){resolve(_module__WEBPACK_IMPORTED_MODULE_0__)})).test();
+    (await new Promise(function(resolve){resolve(_module__WEBPACK_IMPORTED_MODULE_0__)})).test();
+    new Promise(function(resolve){resolve(_module__WEBPACK_IMPORTED_MODULE_0__)}).then(mod=>{
+        mod.test();
+    });
+    // 这个是不支持的写法
+    const name = "module";
+    (await __webpack_require__("./src lazy recursive ^\\.\\/.*$")("./" + name)).test();
+
 })();
 
 /***/ }),

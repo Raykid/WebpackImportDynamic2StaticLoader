@@ -7,7 +7,7 @@
 */
 module.exports = function(source) {
     // 首先匹配///写法，import要写在///之后
-    const regTripleDiagonal = /[\r\n\s]*\/{3}.+[\r\n\s]*/g;
+    const regTripleDiagonal = /[\r\n\s]*\/{2,3}.+[\r\n\s]*/g;
     let insertIndex = 0;
     let res;
     while(res = regTripleDiagonal.exec(source))
@@ -15,8 +15,8 @@ module.exports = function(source) {
         if(res.index !== insertIndex) break;
         insertIndex = regTripleDiagonal.lastIndex;
     }
-    // 匹配动态import
-    const regDynamicImport = /import\(([^\)]+)\)/g;
+    // 匹配动态import，必须是静态字符串，否则不能变为静态import
+    const regDynamicImport = /import\s*\(\s*(["'][^"'\)]+["'])\s*\)/g;
     const nameDict = {};
     let lastIndex = insertIndex;
     let curCount = 0;
